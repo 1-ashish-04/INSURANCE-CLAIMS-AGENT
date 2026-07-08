@@ -10,7 +10,10 @@ Incident Date:
 15 June 2025
 
 Estimated Damage:
-20000
+₹20,000
+
+Initial Estimate:
+₹18,500
 
 Claim Type:
 Vehicle Damage

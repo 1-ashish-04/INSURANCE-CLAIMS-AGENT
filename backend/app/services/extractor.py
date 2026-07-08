@@ -1,6 +1,8 @@
 from app.services.llm.groq_client import GroqClient
 from app.utils.prompt_loader import PromptLoader
 from app.utils.json_parser import JSONParser
+from app.models.schema import FNOLClaim
+from pydantic import ValidationError
 
 class Extractor:
 
@@ -23,5 +25,10 @@ DOCUMENT
 """
 
         response = self.llm.generate(full_prompt)
-
-        return JSONParser.parse(response)
+        data = JSONParser.parse(response)
+        try:
+            claim = FNOLClaim(**data)
+            return claim.model_dump()
+        except ValidationError as e:
+            print(e)
+            raise
