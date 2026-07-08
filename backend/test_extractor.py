@@ -10,7 +10,7 @@ Incident Date:
 15 June 2025
 
 Estimated Damage:
-₹20,000
+1000
 
 Initial Estimate:
 ₹18,500

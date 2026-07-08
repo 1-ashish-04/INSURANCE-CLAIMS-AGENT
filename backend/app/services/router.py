@@ -7,7 +7,7 @@ class ClaimRouter:
     ]
 
     @classmethod
-    def determine_route(cls, claim, missing_fields):
+    def determine_route(cls, claim, review_items):
 
         description = (
             claim.get("description") or ""
@@ -19,7 +19,7 @@ class ClaimRouter:
         ):
             return "Investigation Flag"
 
-        if missing_fields:
+        if review_items:
             return "Manual Review"
 
         claim_type = (

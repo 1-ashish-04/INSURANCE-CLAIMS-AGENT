@@ -20,10 +20,10 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 async def process_claim(file: UploadFile = File(...)):
 
     try:
-
+        filename = f"{uuid.uuid4()}_{file.filename}"
         file_path = os.path.join(
             UPLOAD_FOLDER,
-            filename = f"{uuid.uuid4()}_{file.filename}"
+            filename
         )
 
         with open(file_path, "wb") as buffer:

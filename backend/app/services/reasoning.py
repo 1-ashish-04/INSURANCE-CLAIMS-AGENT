@@ -1,7 +1,7 @@
 class ReasoningEngine:
 
     @staticmethod
-    def generate(route, missing_fields):
+    def generate(route, review_items):
 
         if route == "Investigation Flag":
             return (
@@ -10,8 +10,8 @@ class ReasoningEngine:
 
         if route == "Manual Review":
             return (
-                "Mandatory fields are missing: "
-                + ", ".join(missing_fields)
+                "Manual review required due to: "
+                + ", ".join(review_items)
             )
 
         if route == "Specialist Queue":

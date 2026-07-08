@@ -2,7 +2,7 @@ from app.services.extractor import Extractor
 from app.services.validator import ClaimValidator
 from app.services.router import ClaimRouter
 from app.services.reasoning import ReasoningEngine
-
+from app.services.consistency_checker import ConsistencyChecker
 
 class ClaimProcessor:
 
@@ -15,19 +15,25 @@ class ClaimProcessor:
 
         missing = ClaimValidator.validate(extracted)
 
+        issues = ConsistencyChecker.check(extracted)
+
+        # Treat consistency issues the same as missing fields
+        all_review_items = missing + issues
+
         route = ClaimRouter.determine_route(
             extracted,
-            missing
+            all_review_items
         )
 
         reasoning = ReasoningEngine.generate(
             route,
-            missing
-        )
+            all_review_items
+)
 
         return {
             "extractedFields": extracted,
             "missingFields": missing,
+            "consistencyIssues": issues,
             "recommendedRoute": route,
             "reasoning": reasoning
         }
