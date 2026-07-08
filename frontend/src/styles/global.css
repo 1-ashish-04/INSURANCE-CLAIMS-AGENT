@@ -5,15 +5,20 @@
 }
 
 body{
-    font-family:Segoe UI,Tahoma,Geneva,Verdana,sans-serif;
-    background:#f4f7fb;
-    color:#333;
+    font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;
+    background:#F4F7FB;
+    color:#222;
 }
 
 button{
     cursor:pointer;
+    font-family:inherit;
 }
 
 input{
     font-family:inherit;
+}
+
+a{
+    text-decoration:none;
 }

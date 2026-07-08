@@ -1,17 +1,31 @@
 import React from 'react'
 import './Header.css'
 
-const Header = () => {
-   return (
+
+function Header() {
+    return (
         <header className="header">
-            <div className="header-content">
-                <h1>🚗 Autonomous Insurance Claims Processing Agent</h1>
-                <p>
-                    AI-powered First Notice of Loss (FNOL) Processing System
-                </p>
+            <div className="header-container">
+
+                <div className="logo">
+
+                    <div className="logo-icon">
+                        🚗
+                    </div>
+
+                    <div>
+                        <h1>Insurance Claim Processor</h1>
+
+                        <p>
+                            Autonomous FNOL Processing Agent
+                        </p>
+                    </div>
+
+                </div>
+
             </div>
         </header>
     );
 }
 
-export default Header
+export default Header;
