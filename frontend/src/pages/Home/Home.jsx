@@ -1,13 +1,21 @@
-function Home(){
+import React from 'react'
+import Header from "../../components/Header/Header";
+import UploadCard from "../../components/UploadCard/UploadCard";
 
-    return(
-        <div>
+import "../../styles/home.css";
 
-            <h1>Autonomous Insurance Claims Processing Agent</h1>
+function Home() {
+    return (
+        <>
+            <Header />
 
-        </div>
-    )
+            <main className="home">
 
+                <UploadCard />
+
+            </main>
+        </>
+    );
 }
 
 export default Home;
