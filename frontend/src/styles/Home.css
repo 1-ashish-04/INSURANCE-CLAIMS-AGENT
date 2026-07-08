@@ -1,8 +1,0 @@
-.home{
-    min-height:calc(100vh - 100px);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:40px;
-    background:#F4F7FB;
-}
