@@ -1,0 +1,53 @@
+.route-card{
+width: 100%;
+   background:white;
+
+padding:28px;
+
+border-radius:16px;
+
+box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+transition:.25s;
+
+}
+
+.badge{
+
+    display:inline-block;
+
+    padding:12px 20px;
+
+    border-radius:25px;
+
+    color:white;
+
+    margin-top:15px;
+
+    font-weight:bold;
+
+}
+
+.fast{
+
+    background:#22C55E;
+
+}
+
+.manual{
+
+    background:#F59E0B;
+
+}
+
+.investigation{
+
+    background:#EF4444;
+
+}
+
+.specialist{
+
+    background:#3B82F6;
+
+}

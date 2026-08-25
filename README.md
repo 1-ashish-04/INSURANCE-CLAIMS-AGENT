@@ -1,34 +1,70 @@
 # 🚗 Autonomous Insurance Claims Processing Agent
 
-An AI-powered backend application that automates the processing of **First Notice of Loss (FNOL)** documents for insurance claims.
+An AI-powered full-stack application that automates the processing of **First Notice of Loss (FNOL)** insurance claim documents.
 
-The application extracts structured information from PDF and TXT FNOL documents using the **Groq LLM**, validates the extracted data, detects missing or inconsistent fields, classifies the claim according to business rules, and returns a structured JSON response.
+The system extracts structured information from PDF and TXT FNOL documents using the **Groq LLM (Llama 3.3)**, validates the extracted data, identifies missing or inconsistent fields, classifies claims according to predefined business rules, and recommends the appropriate processing workflow.
 
-> **Note:** This repository currently contains the backend implementation. A React frontend will be added in a future update.
+The application consists of:
+
+- ⚛️ **React Frontend** for uploading FNOL documents and visualizing results.
+- 🚀 **FastAPI Backend** for AI-powered extraction, validation, routing, and reasoning.
 
 ---
 
-# Features
+# ✨ Features
 
-- 📄 Extract information from PDF and TXT FNOL documents
+## 🤖 AI Claim Processing
+
+- 📄 Extract structured information from PDF and TXT FNOL documents
 - 🤖 AI-powered field extraction using Groq (Llama 3.3)
-- ✅ Pydantic schema validation
+- ✅ Schema validation using Pydantic
 - 🔍 Detect missing mandatory fields
-- ⚠️ Detect basic inconsistent claim data
+- ⚠️ Detect inconsistent claim information
 - 🚦 Rule-based claim routing
-- 💬 Human-readable routing explanation
-- 🚀 REST API built with FastAPI
-- 📚 Interactive Swagger API documentation
+- 💬 AI-generated routing explanation
 
 ---
 
-# Tech Stack
+## 💻 Frontend Dashboard
+
+- ⚛️ Modern React dashboard
+- 📤 Upload PDF/TXT FNOL documents
+- 📊 Claim summary dashboard
+- 🚥 Route status badges
+- 📋 Missing fields panel
+- 🔍 Consistency issues panel
+- 💡 AI reasoning display
+- 📱 Responsive UI
+
+---
+
+## 🚀 Backend API
+
+- FastAPI REST API
+- Interactive Swagger Documentation
+- React ↔ FastAPI Integration
+- JSON Response API
+
+---
+
+# 🛠 Tech Stack
+
+## Frontend
+
+- React (Vite)
+- JavaScript (ES6+)
+- Axios
+- React Icons
+- CSS3
+
+---
 
 ## Backend
 
 - Python 3.12
 - FastAPI
 - Groq API
+- Llama 3.3 70B Versatile
 - PyMuPDF
 - Pydantic
 - python-dotenv
@@ -36,7 +72,7 @@ The application extracts structured information from PDF and TXT FNOL documents 
 
 ---
 
-# Project Structure
+# 📁 Project Structure
 
 ```text
 INSURANCE-CLAIMS-AGENT/
@@ -44,70 +80,99 @@ INSURANCE-CLAIMS-AGENT/
 ├── backend/
 │   │
 │   ├── app/
-│   │   │
 │   │   ├── api/
-│   │   │     └── routes.py
-│   │   │
 │   │   ├── core/
-│   │   │     └── config.py
-│   │   │
 │   │   ├── models/
-│   │   │     └── schema.py
-│   │   │
 │   │   ├── prompts/
-│   │   │     └── extraction_prompt.txt
-│   │   │
-│   │   │
 │   │   ├── services/
-│   │   │     ├── llm/
-│   │   │     ├── claim_processor.py
-│   │   │     ├── consistency_checker.py
-│   │   │     ├── extractor.py
-│   │   │     ├── reasoning.py
-│   │   │     ├── router.py
-│   │   │     └── validator.py
-│   │   │
 │   │   ├── utils/
-│   │   │     ├── file_loader.py
-│   │   │     ├── json_parser.py
-│   │   │     ├── normalizer.py
-│   │   │     ├── pdf_reader.py
-│   │   │     └── prompt_loader.py
-│   │   │
 │   │   └── main.py
-|   |
-│   ├── sample_documents/
-|   |
-│   ├── uploads/
-│   ├── outputs/
 │   │
+│   ├── outputs/
+│   ├── sample_documents/
+│   ├── uploads/
+│   ├── requirements.txt
 │   ├── test_extractor.py
 │   ├── test_groq.py
-│   ├── requirements.txt
-│   ├── .env
+│   └── .env
+│
+├── frontend/
+│   │
+│   ├── public/
+│   │
+│   ├── src/
+│   │   ├── assets/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── services/
+│   │   ├── styles/
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   │
+│   ├── package.json
+│   ├── vite.config.js
 │   └── .gitignore
 │
+├── LICENSE
 └── README.md
 ```
 
 ---
 
-# Processing Pipeline
+# 🏗 System Architecture
+
+```text
+                    User Uploads FNOL Document
+                               │
+                               ▼
+                    React Frontend Dashboard
+                               │
+                               ▼
+                         FastAPI REST API
+                               │
+                               ▼
+                      PDF / TXT Text Reader
+                               │
+                               ▼
+                         Groq LLM (Llama 3.3)
+                               │
+                               ▼
+                  Structured Information Extraction
+                               │
+                               ▼
+                    Validation & Consistency Checks
+                               │
+                               ▼
+                        Rule-Based Routing Engine
+                               │
+                               ▼
+                     AI Reasoning Generation
+                               │
+                               ▼
+                      JSON Response to Frontend
+```
+
+---
+
+# ⚙ Processing Pipeline
 
 ```text
           FNOL Document
                  │
                  ▼
-        PDF/TXT File Reader
+         Upload via React UI
                  │
                  ▼
-         Text Extraction Layer
+         FastAPI File Upload API
+                 │
+                 ▼
+        PDF/TXT Text Extraction
                  │
                  ▼
             Groq LLM API
                  │
                  ▼
-         Structured JSON Output
+      Structured JSON Extraction
                  │
                  ▼
         Pydantic Validation
@@ -125,20 +190,20 @@ INSURANCE-CLAIMS-AGENT/
         Reasoning Generator
                  │
                  ▼
-          Final JSON Result
+      Results Displayed in React
 ```
 
 ---
 
-# Extracted Fields
-
-The application extracts the following information:
+# 📄 Extracted Fields
 
 ## Policy Information
 
 - Policy Number
 - Policyholder Name
 - Effective Dates
+
+---
 
 ## Incident Information
 
@@ -147,17 +212,23 @@ The application extracts the following information:
 - Location
 - Description
 
+---
+
 ## Involved Parties
 
 - Claimant
 - Third Parties
 - Contact Details
 
+---
+
 ## Asset Details
 
 - Asset Type
 - Asset ID
 - Estimated Damage
+
+---
 
 ## Other Information
 
@@ -167,19 +238,19 @@ The application extracts the following information:
 
 ---
 
-# Routing Rules
+# 🚦 Routing Rules
 
 | Condition | Route |
 |------------|-------|
-| Estimated Damage < 25,000 | Fast-track |
+| Estimated Damage < ₹25,000 | Fast-track |
 | Missing mandatory fields | Manual Review |
-| Description contains "fraud", "staged" or "inconsistent" | Investigation Flag |
+| Description contains **fraud**, **staged**, or **inconsistent** | Investigation Flag |
 | Claim Type = Injury | Specialist Queue |
 | Otherwise | Standard Processing |
 
 ---
 
-# API Endpoint
+# 🌐 REST API
 
 ## Process FNOL Claim
 
@@ -199,7 +270,7 @@ multipart/form-data
 
 ---
 
-# Example Response
+## Example Response
 
 ```json
 {
@@ -218,30 +289,35 @@ multipart/form-data
 
 ---
 
-# Getting Started
+# 🚀 Getting Started
 
-## Clone the Repository
+## Clone Repository
 
 ```bash
 git clone https://github.com/1-ashish-04/INSURANCE-CLAIMS-AGENT.git
+
+cd INSURANCE-CLAIMS-AGENT
 ```
 
 ---
 
-## Navigate to the Backend
+# ⚙ Backend Setup
+
+## Navigate to Backend
 
 ```bash
-cd insurance-claims-agent/backend
+cd backend
 ```
 
 ---
 
-## Create a Virtual Environment
+## Create Virtual Environment
 
 ### Windows
 
 ```bash
 python -m venv .venv
+
 .venv\Scripts\activate
 ```
 
@@ -249,6 +325,7 @@ python -m venv .venv
 
 ```bash
 python3 -m venv .venv
+
 source .venv/bin/activate
 ```
 
@@ -270,16 +347,20 @@ Create a `.env` file inside the `backend` directory.
 GROQ_API_KEY=your_groq_api_key
 MODEL_NAME=llama-3.3-70b-versatile
 ```
-Create a free API key from https://console.groq.com/.
+
+Create a free API key from:
+
+https://console.groq.com/
+
 ---
 
-## Run the Server
+## Run Backend
 
 ```bash
 uvicorn app.main:app --reload
 ```
 
-Server
+Backend
 
 ```
 http://127.0.0.1:8000
@@ -293,15 +374,43 @@ http://127.0.0.1:8000/docs
 
 ---
 
-# Testing
+# 💻 Frontend Setup
 
-Run the Groq connection test
+Navigate to the frontend directory.
+
+```bash
+cd frontend
+```
+
+Install dependencies.
+
+```bash
+npm install
+```
+
+Run the React development server.
+
+```bash
+npm run dev
+```
+
+Frontend
+
+```
+http://localhost:5173
+```
+
+---
+
+# 🧪 Testing
+
+Run the Groq connection test.
 
 ```bash
 python test_groq.py
 ```
 
-Run the extraction pipeline test
+Run the extraction pipeline test.
 
 ```bash
 python test_extractor.py
@@ -309,12 +418,12 @@ python test_extractor.py
 
 ---
 
-# Sample Documents
+# 📂 Sample Documents
 
-Sample FNOL documents can be placed inside
+Place sample FNOL documents inside:
 
 ```
-backend/app/sample_documents/
+backend/sample_documents/
 ```
 
 Supported formats:
@@ -322,31 +431,36 @@ Supported formats:
 - PDF
 - TXT
 
----
 
-# Future Improvements
+# 🚀 Future Improvements
 
-- React frontend dashboard
-- Drag-and-drop file upload
 - OCR support for scanned PDFs
-- DOCX support
-- Docker containerization
-- Unit and integration testing
-- Database integration
-- Authentication and authorization
-- Claim history tracking
+- DOCX document support
+- Authentication & Authorization
+- Database integration (PostgreSQL/MongoDB)
+- Claim history dashboard
+- Docker & Docker Compose
+- Unit & Integration Testing
+- CI/CD Pipeline
+- Cloud Deployment
+- Email Notifications
 
 ---
 
-# License
-This project is licensed under the MIT License. See the LICENSE file for details.
+# 📄 License
+
+This project is licensed under the **MIT License**.
+
+See the **LICENSE** file for more information.
 
 ---
 
-# Author
+# 👨‍💻 Author
 
 **Ashish Jayaswal**
 
 Bachelor of Computer Science
 
-AI-Powered Autonomous Insurance Claims Processing Agent
+**Autonomous Insurance Claims Processing Agent**
+
+Built using **React**, **FastAPI**, and **Groq Llama 3.3**.
